@@ -1,0 +1,64 @@
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+    padding: 2rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+form > input,
+form > button{
+    padding: 10px 15px;
+    font-size: 1.5rem;
+}
+.list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
+    gap: 1rem;
+}
+.empty{
+    border: 2px solid #ccc;
+    text-align: center;
+    padding: 2rem;
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ccc;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1rem;
+    gap: 10px;
+}
+.text{
+font-size: 1.3rem;
+}
+.actions{
+    display: flex;
+    gap: 1rem;
+
+}
+.divider{
+border: 1px solid black;
+}
+div > button{
+    padding: 5px 10px;
+}
