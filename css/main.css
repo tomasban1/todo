@@ -62,3 +62,6 @@ border: 1px solid black;
 div > button{
     padding: 5px 10px;
 }
+.hidden{
+    display: none;
+}
