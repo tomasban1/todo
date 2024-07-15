@@ -4,6 +4,10 @@ const formDom = document.forms[0];
 const textImput = formDom.querySelector('input');
 const submitBtn = formDom.querySelector('button');
 const listDom = document.querySelector('.list');
+const toastDom = document.getElementById('toast');
+const msgtitle = toastDom.querySelector('.title');
+const msgText = document.getElementById('msg');
+const exitPopUpBtn = document.querySelector('.close > button');
 
 
 
@@ -11,19 +15,28 @@ const todoData = [];
 let listNum = 0;
 submitBtn.addEventListener('click', e => {
     e.preventDefault();
-    listDom.classList.remove('empty');
 
-    h1Dom.textContent = `To do (${listNum += 1})`;
+    if (textImput.value === ''
+        || textImput.value[0].toUpperCase() !== textImput.value[0]) {
+        listNum = 0
+    } else {
+        h1Dom.textContent = `To do (${listNum += 1})`;
+    }
 
-    if (textImput.value.length === 0) {
+
+    if (!isValidText(textImput.value)) {
         return;
     }
 
     todoData.push({
-        task: textImput.value,
+        task: textImput.value.trim(),
         createdAt: Date.now(),
     });
 
+    toastDom.classList.add('active');
+    toastDom.setAttribute('data-state', 'success');
+    msgtitle.textContent = 'GREAT SUCCESS!';
+    msgText.textContent = 'Task successfully added.'
 
     textImput.value = '';
     renderList();
@@ -77,7 +90,17 @@ function renderTaskList() {
         const updateBtn = buttonsDom[0];
         updateBtn.addEventListener('click', e => {
             e.preventDefault();
-            todoData[i].task = updateImputDom.value;
+            if (!isValidText(updateImputDom.value)) {
+                listNum += 0;
+                return;
+            }
+            todoData[i].task = updateImputDom.value.trim();
+
+            toastDom.classList.add('active');
+            toastDom.setAttribute('data-state', 'info');
+            msgtitle.textContent = 'GREAT SUCCESS!';
+            msgText.textContent = 'Your task has been successfully updated'
+
             renderTaskList();
         });
 
@@ -95,15 +118,52 @@ function renderTaskList() {
         deleteBtn.addEventListener('click', () => {
             todoData.splice(i, 1)
             h1Dom.textContent = `To do (${listNum -= 1})`;
+
+            toastDom.classList.add('active');
+            toastDom.setAttribute('data-state', 'success');
+            msgtitle.textContent = 'GREAT SUCCESS!';
+            msgText.textContent = 'Task successfully deleted'
+
             renderTaskList();
         });
     }
 }
 
 function formatTime(timeInMs) {
-    const now = new Date();
+    const now = new Date(timeInMs);
     const currentDate = new Date().toJSON().slice(0, 10);
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    return `Task created ${currentDate}, ${hours}:${minutes}`
+    let hours = now.getHours();
+    let minutes = (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+    let seconds = now.getSeconds();
+    if (hours < 10) {
+        '0' + hours
+    }
+    if (minutes < 10) {
+        '0' + minutes
+    }
+    return `Task created ${currentDate}, ${hours}:${minutes}:${seconds}`
 }
+function isValidText(text) {
+    if (text.trim() === '') {
+        toastDom.classList.add('active');
+        toastDom.setAttribute('data-state', 'warning');
+        msgtitle.textContent = 'SORRY...';
+        msgText.textContent = 'Text field should not be empty'
+        return false
+    }
+    if (text[0].toUpperCase() !== text[0]) {
+        toastDom.classList.add('active');
+        toastDom.setAttribute('data-state', 'warning');
+        msgtitle.textContent = 'SORRY...';
+        msgText.textContent = 'The first letter should be uppercase.'
+        return false
+    }
+    listNum = 0
+
+    return true;
+
+}
+
+exitPopUpBtn.addEventListener('click', () => {
+    toastDom.classList.remove('active')
+})

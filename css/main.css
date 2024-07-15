@@ -65,3 +65,85 @@ div > button{
 .hidden{
     display: none;
 }
+.toast{
+    display: none;
+    /* display: flex;  */
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    width: 90%;
+    max-width: 24rem;
+    transform: translateX(-50%);
+    bottom: 3rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 0.2rem 0.4rem #0003;
+}
+.active{
+    display: flex;
+}
+.toast > .icon{
+    padding: 1rem;
+    width: 4rem;
+    height: 100%;
+}
+.toast > .icon > svg{
+    display: none;
+    width: 2rem;
+    height: 2rem;
+}
+.toast[data-state="success"] > .icon > svg:nth-child(1),
+.toast[data-state="info"] > .icon > svg:nth-child(2),
+.toast[data-state="warning"] > .icon > svg:nth-child(3),
+.toast[data-state="error"] > .icon > svg:nth-child(4){
+    display: block;
+}
+.toast[data-state="success"]>.icon>svg:nth-child(1){
+    color: green;
+}
+.toast[data-state="info"]>.icon>svg:nth-child(2){
+    color: blue;
+}
+.toast[data-state="warning"]>.icon>svg:nth-child(3){
+    color: orange;
+}
+.toast[data-state="error"]>.icon>svg:nth-child(4){
+    color: red;
+}
+
+.toast > .texts{
+    padding: 1rem;
+}
+.toast > .texts > .title{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.toast[data-state="success"]>.texts>.title {
+    color: green;
+}
+.toast[data-state="info"]>.texts>.title {
+    color: blue;
+}
+.toast[data-state="warning"]>.texts>.title {
+    color: orange;
+}
+.toast[data-state="error"]>.texts>.title {
+    color: red;
+}
+.toast > .close{
+    width: 4rem;
+    margin-left: auto;
+    padding: 1rem;
+}
+.toast>.close>button>svg {
+    width: 2rem;
+    height: 2rem; 
+}
+.toast>.close>button {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+.toast>.close>button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
