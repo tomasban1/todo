@@ -24,8 +24,11 @@ form{
 }
 form > input,
 form > button{
-    padding: 10px 15px;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.3rem 0.5rem;
     font-size: 1.5rem;
+    line-height: 2rem;
 }
 .list{
     display: grid;
@@ -47,7 +50,47 @@ form > button{
     border-radius: 10px;
     padding: 1rem;
     gap: 10px;
+    position: relative;
+    border-left: 0.5rem solid black;
 }
+
+/* ------------------------------------------------------------------ */
+.item > .state{
+    display: none;
+    padding: 0.3em 0.5em;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: green;
+    color: white;
+}
+.list .item[data-state='done'] .state{
+    display: block;
+}
+.item[data-state='done']{
+    background-color: #ccc;
+}
+/* --------------------------------------------------- */
+
+.list-actions{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+}
+.title{
+    font-weight: bold;
+}
+.list-actions button{
+    padding: 0.3rem 0.7rem;
+    font-size: 1.1rem;
+}
+.list-actions button.active{
+    background-color: blue;
+    color: white;
+}
+
 .text{
 font-size: 1.3rem;
 }
