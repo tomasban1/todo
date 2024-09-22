@@ -4,6 +4,7 @@ body * {
     padding: 0;
     vertical-align: top;
     box-sizing: border-box;
+    background-color: bisque;
 }
 
 body {
@@ -69,7 +70,7 @@ form > button{
     display: block;
 }
 .item[data-state='done']{
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 /* --------------------------------------------------- */
 
@@ -85,6 +86,7 @@ form > button{
 .list-actions button{
     padding: 0.3rem 0.7rem;
     font-size: 1.1rem;
+    border-radius: 15px;
 }
 .list-actions button.active{
     background-color: blue;
@@ -104,6 +106,7 @@ border: 1px solid black;
 }
 div > button{
     padding: 5px 10px;
+    border-radius: 15px;
 }
 .hidden{
     display: none;
