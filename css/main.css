@@ -4,7 +4,7 @@ body * {
     padding: 0;
     vertical-align: top;
     box-sizing: border-box;
-    background-color: bisque;
+    background-color: #BAB78D;
 }
 
 body {
@@ -18,18 +18,32 @@ main{
     flex-direction: column;
     gap: 2rem;
 }
+main > h1{
+    text-align: center;
+}
 form{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    gap: 10px;
 }
 form > input,
 form > button{
-    width: 100%;
+    width: 60%;
     min-height: 3rem;
     padding: 0.3rem 0.5rem;
     font-size: 1.5rem;
     line-height: 2rem;
+        background: #fff;
+            border-radius: 20px;
+            border: 2px solid black;
+}
+form > button:hover{
+    cursor: pointer;
+}
+form > span{
+    font-size: 22px;
 }
 .list{
     display: grid;
@@ -37,12 +51,13 @@ form > button{
     gap: 1rem;
 }
 .empty{
-    border: 2px solid #ccc;
+    border: 2px solid black;
     text-align: center;
     padding: 2rem;
     font-size: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #ccc;
+    border-radius: 10px;
 }
 .item{
     display: flex;
@@ -53,6 +68,7 @@ form > button{
     gap: 10px;
     position: relative;
     border-left: 0.5rem solid black;
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -87,10 +103,16 @@ form > button{
     padding: 0.3rem 0.7rem;
     font-size: 1.1rem;
     border-radius: 15px;
+    background: #fff;
 }
 .list-actions button.active{
     background-color: blue;
     color: white;
+}
+
+.list-actions button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .text{
@@ -107,6 +129,7 @@ border: 1px solid black;
 div > button{
     padding: 5px 10px;
     border-radius: 15px;
+    background: #fff;
 }
 .hidden{
     display: none;
@@ -127,6 +150,22 @@ div > button{
 .active{
     display: flex;
 }
+
+.done:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+.edit:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+.delete:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .toast > .icon{
     padding: 1rem;
     width: 4rem;

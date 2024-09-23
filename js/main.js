@@ -40,7 +40,6 @@ submitBtn.addEventListener('click', e => {
 
     localStorage.setItem('tasks', JSON.stringify(todoData))
 
-
     textImput.value = '';
     renderList();
 
